@@ -1,41 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/bg_pattern"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/name"
-            android:maxLines="1"
-            android:inputType="text"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/name_hint" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <EditText
-            android:background="@android:color/transparent"
-            android:inputType="number"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/price_hint" />
-
-        <TextView
-            android:id="@+id/add"
-            android:enabled="false"
-            android:textSize="40sp"
-            android:paddingStart="@dimen/margin_l"
-            android:paddingEnd="@dimen/margin_l"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            tools:ignore="HardcodedText" />
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>
