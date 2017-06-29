@@ -12,23 +12,6 @@ import java.util.List;
 class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
     final List<Item> items = new ArrayList<>();
 
-    ItemsAdapter() {
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-        items.add(new Item("car", 100));
-        items.add(new Item("apple", 400));
-    }
-
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null));
@@ -44,6 +27,15 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void clear() {
+        items.clear();
+    }
+
+    public void addAll(List<Item> items) {
+        this.items.addAll(items);
+        notifyDataSetChanged();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
