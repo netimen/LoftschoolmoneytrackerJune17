@@ -1,6 +1,8 @@
 package moneytrackerjune17.loftschool.com.loftschoolmoneytrackerjune17;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable{
     public static final String TYPE_EXPENSE = "expense";
     public static final String TYPE_INCOME = "income";
 
