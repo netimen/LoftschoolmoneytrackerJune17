@@ -19,5 +19,6 @@ public interface LSApi {
     @GET("items")
     Call<List<Item>> items(@Query("type") String type);
 
-
+    @GET("auth")
+    Call<AuthResult> auth(@Query("social_user_id") String socialUserId);
 }

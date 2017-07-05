@@ -1,5 +1,6 @@
 package moneytrackerjune17.loftschool.com.loftschoolmoneytrackerjune17;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,17 +10,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+    TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs = (TabLayout) findViewById(R.id.tabs);
         final ViewPager pages = (ViewPager) findViewById(R.id.pages);
-         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         pages.setAdapter(new MainPagerAdapter());
         tabs.setupWithViewPager(pages);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!((LSApp) getApplication()).isLoggedIn())
+            startActivity(new Intent(this, AuthActivity.class));
+        else {
+        }
     }
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
