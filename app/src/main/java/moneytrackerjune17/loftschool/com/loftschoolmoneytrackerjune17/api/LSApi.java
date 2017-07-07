@@ -21,4 +21,8 @@ public interface LSApi {
 
     @GET("auth")
     Call<AuthResult> auth(@Query("social_user_id") String socialUserId);
+
+
+    @GET("balance")
+    Call<BalanceResult> balance();
 }

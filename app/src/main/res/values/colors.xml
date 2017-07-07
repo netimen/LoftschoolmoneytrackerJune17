@@ -8,4 +8,9 @@
     <color name="colorLightYellow">#FCC418</color>
     <color name="colorDarkYellow">#E6AE1E</color>
 
+    <color name="colorItem">#fcc31e</color>
+    <color name="colorExpense">#f76c41</color>
+
+    <color name="colorPrimaryBright">#3ab7ae</color>
+    <color name="colorComment">#95989a</color>
 </resources>
