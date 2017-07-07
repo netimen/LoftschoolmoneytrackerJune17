@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
         private final String[] titles;
+        private final String[] types = {Item.TYPE_EXPENSE, Item.TYPE_INCOME };
 
         MainPagerAdapter() {
             super(getSupportFragmentManager());
@@ -44,11 +45,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            final ItemsFragment fragment = new ItemsFragment();
-            Bundle args = new Bundle();
-            args.putString(ItemsFragment.ARG_TYPE, Item.TYPE_EXPENSE);
-            fragment.setArguments(args);
-            return fragment;
+
+            switch (position) {
+                case 0:
+                case 1:
+                    ItemsFragment fragment = new ItemsFragment();
+                    Bundle args = new Bundle();
+                    args.putString(ItemsFragment.ARG_TYPE, types[position]);
+                    fragment.setArguments(args);
+                    return fragment;
+                case 2:
+                    return new BalanceFragment();
+
+                default:
+                    return null;
+            }
         }
 
         @Override

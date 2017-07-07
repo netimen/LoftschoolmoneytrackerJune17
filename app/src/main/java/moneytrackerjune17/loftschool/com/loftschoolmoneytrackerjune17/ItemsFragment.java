@@ -134,9 +134,9 @@ public class ItemsFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),AddItemActivity.class);
-                intent.putExtra(AddItemActivity.EXTRA_TYPE,type);
-                startActivityForResult(intent,RC_ADD_ITEM);
+                Intent intent = new Intent(getActivity(), AddItemActivity.class);
+                intent.putExtra(AddItemActivity.EXTRA_TYPE, type);
+                startActivityForResult(intent, RC_ADD_ITEM);
             }
         });
         type = getArguments().getString(ARG_TYPE);
@@ -158,12 +158,12 @@ public class ItemsFragment extends Fragment {
                 return new AsyncTaskLoader<List<Item>>(getContext()) {
                     @Override
                     public List<Item> loadInBackground() {
-                       try {
-                           return api.items(type).execute().body();
-                       } catch (Exception e) {
-                           e.printStackTrace();
-                           return null;
-                       }
+                        try {
+                            return api.items(type).execute().body();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            return null;
+                        }
                     }
                 };
             }
@@ -179,15 +179,17 @@ public class ItemsFragment extends Fragment {
             }
 
             @Override
-            public void onLoaderReset(Loader<List<Item>> loader) {}
+            public void onLoaderReset(Loader<List<Item>> loader) {
+            }
         }).forceLoad();
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode==RC_ADD_ITEM&&resultCode==RESULT_OK){
+        if (requestCode == RC_ADD_ITEM && resultCode == RESULT_OK) {
             Item item = (Item) data.getSerializableExtra(AddItemActivity.RESULT_ITEM);
-            Toast toast = Toast.makeText(getContext(),item.name,Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getContext(), item.name, Toast.LENGTH_LONG);
             toast.show();
         }
     }
